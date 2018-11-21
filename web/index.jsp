@@ -24,6 +24,7 @@
                 </div>
                 <p id="registrate">no tienes cuenta? Entonces <a href="Registro.jsp">registrate!!</a> </p><br>
                 <input type="submit" name="enviar" value="ingresar">
+                <p>hola</p>
             </form>
         </div>
     </body>
