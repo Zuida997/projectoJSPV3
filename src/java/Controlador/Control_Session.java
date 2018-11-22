@@ -37,17 +37,19 @@ public class Control_Session extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             if(request.getParameter("log")!=null){
                 HttpSession sesion=request.getSession();
-                String sql="SELECT * FROM usuarios WHERE estado = 1";
+                String usu=(String)request.getParameter("usuario");
+                String pass=(String)request.getParameter("pass");
+                String sql="SELECT * FROM usuarios WHERE estado = 1 AND alias='"+usu+"' AND clave='"+pass+"'";
                 ResultSet res=con.consultar(sql);
                 try{
                     while(res.next()){
-                        if(res.getInt(1)==1){
+                        if(res.getInt(4)==1){
                             //cambiar luego a la pagina administracion
-                            response.sendRedirect(null);
-                        }else if(res.getInt(1)==2){
+                            response.sendRedirect("Vista/Principal_Adm.jsp");
+                        }else if(res.getInt(4)==2){
                             //cambiar luego a la pagina para usuarios comunes
                             response.sendRedirect(null);
-                        }else if(res.getInt(1)==3){
+                        }else if(res.getInt(4)==3){
                             //cambiar luego a la pagina pagina comun con permisos para agregar cabañas
                             response.sendRedirect(null);
                         }
