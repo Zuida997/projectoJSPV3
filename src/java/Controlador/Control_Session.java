@@ -7,11 +7,13 @@ package Controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -19,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "Control_Session", urlPatterns = {"/Control_Session"})
 public class Control_Session extends HttpServlet {
-
+    Control_Conexion con=new Control_Conexion();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -33,7 +35,26 @@ public class Control_Session extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            response.flushBuffer();
+            if(request.getParameter("log")!=null){
+                HttpSession sesion=request.getSession();
+                String sql="SELECT * FROM usuarios WHERE estado = 1";
+                ResultSet res=con.consultar(sql);
+                try{
+                    while(res.next()){
+                        if(res.getInt(1)==1){
+                            //cambiar luego a la pagina administracion
+                            response.sendRedirect(null);
+                        }else if(res.getInt(1)==2){
+                            //cambiar luego a la pagina para usuarios comunes
+                            response.sendRedirect(null);
+                        }else if(res.getInt(1)==3){
+                            //cambiar luego a la pagina pagina comun con permisos para agregar cabañas
+                            response.sendRedirect(null);
+                        }
+                    }
+
+                }catch(Exception ex){}
+            }
         }
     }
 
