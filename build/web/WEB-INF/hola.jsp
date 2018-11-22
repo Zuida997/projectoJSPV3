@@ -15,7 +15,7 @@
     <body>
         <div class="contenedorL">
             <img src="Vista/assets/img/iconUsuario.png" alt="icono_usuario.png" id="icono">
-            <form class="" action="Control_Session" method="post">
+            <form class="" action="Principal.jsp" method="post">
                 <div class="miniCont">
                     <label id="usuario">nombre de usuario</label><br>
                     <input type="text" name="usuario" value=""><br><br>
