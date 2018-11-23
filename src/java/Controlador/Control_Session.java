@@ -35,7 +35,6 @@ public class Control_Session extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            if(request.getParameter("log")!=null){
                 HttpSession sesion=request.getSession();
                 String usu=(String)request.getParameter("usuario");
                 String pass=(String)request.getParameter("pass");
@@ -62,7 +61,6 @@ public class Control_Session extends HttpServlet {
                     }
 
                 }catch(Exception ex){}
-            }
         }
     }
 
