@@ -17,7 +17,7 @@ import java.sql.Statement;
  */
 public class Control_Conexion {
         private static Connection conexion;
-    private static String url="jdbc:mysql://localhost:3306/systemmedico"+"?useTimezone=true&serverTimezone=UTC";
+    private static String url="jdbc:mysql://localhost:3306/bd_cabin";
     private static String user="root";
     private static String clave="";
     

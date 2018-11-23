@@ -19,7 +19,7 @@
           <!-- SECCION DE LOGIN -->
           <div class="login-sec">
               <h2 class="text-center">INGRESO</h2>
-                <form class="login-form" method="post" action="Controlador/Control_Session">
+                <form class="login-form" method="post" action="Control_Session">
                 <div class="form-group">
                   <label for="exampleInputEmail1" class="text-uppercase">Usuario</label>
                   <input type="text" name="usuario" class="form-control" placeholder="" size="30px">

@@ -8,6 +8,7 @@ package Controlador;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,32 +36,35 @@ public class Control_Session extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-                HttpSession sesion=request.getSession();
+            try{
                 String usu=(String)request.getParameter("usuario");
                 String pass=(String)request.getParameter("pass");
-                String sql="SELECT * FROM usuarios WHERE estado = 1 AND alias='"+usu+"' AND clave='"+pass+"'";
+                String sql="SELECT * FROM usuarios WHERE alias='"+usu+"' AND clave='"+pass+"'";
                 ResultSet res=con.consultar(sql);
-                try{
-                    while(res.next()){
-                        switch (res.getInt(4)) {
-                            case 1:
-                                //cambiar luego a la pagina administracion
-                                response.sendRedirect("Vista/Principal_Adm.jsp");
-                                break;
-                            case 2:
-                                //cambiar luego a la pagina para usuarios comunes
-                                response.sendRedirect(null);
-                                break;
-                            case 3:
-                                //cambiar luego a la pagina pagina comun con permisos para agregar cabañas
-                                response.sendRedirect(null);
-                                break;
-                            default:
-                                break;
-                        }
-                    }
 
-                }catch(Exception ex){}
+                while(res.next()){
+                    switch (res.getInt(4)) {
+                        case 1:
+                            //cambiar luego a la pagina administracion
+                            response.sendRedirect("Principal_Adm.jsp");
+                            break;
+                        case 2:
+                            //cambiar luego a la pagina para usuarios comunes
+                            response.sendRedirect(null);
+                            break;
+                        case 3:
+                            //cambiar luego a la pagina pagina comun con permisos para agregar cabañas
+                            response.sendRedirect(null);
+                            break;
+                        default:
+                            response.sendRedirect("index.jsp");
+                            break;
+                    }
+                }
+
+            }catch(SQLException ex){
+                out.println(ex.getMessage());
+            }
         }
     }
 
