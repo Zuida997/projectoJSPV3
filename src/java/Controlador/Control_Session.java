@@ -43,15 +43,21 @@ public class Control_Session extends HttpServlet {
                 ResultSet res=con.consultar(sql);
                 try{
                     while(res.next()){
-                        if(res.getInt(4)==1){
-                            //cambiar luego a la pagina administracion
-                            response.sendRedirect("Vista/Principal_Adm.jsp");
-                        }else if(res.getInt(4)==2){
-                            //cambiar luego a la pagina para usuarios comunes
-                            response.sendRedirect(null);
-                        }else if(res.getInt(4)==3){
-                            //cambiar luego a la pagina pagina comun con permisos para agregar cabañas
-                            response.sendRedirect(null);
+                        switch (res.getInt(4)) {
+                            case 1:
+                                //cambiar luego a la pagina administracion
+                                response.sendRedirect("Vista/Principal_Adm.jsp");
+                                break;
+                            case 2:
+                                //cambiar luego a la pagina para usuarios comunes
+                                response.sendRedirect(null);
+                                break;
+                            case 3:
+                                //cambiar luego a la pagina pagina comun con permisos para agregar cabañas
+                                response.sendRedirect(null);
+                                break;
+                            default:
+                                break;
                         }
                     }
 
