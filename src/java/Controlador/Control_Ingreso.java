@@ -7,22 +7,19 @@ package Controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author maxim
+ * @author xzur
  */
-@WebServlet(name = "Control_Session", urlPatterns = {"/Control_Session"})
-public class Control_Session extends HttpServlet {
-    Control_Conexion con=new Control_Conexion();
+@WebServlet(name = "Control_Ingreso", urlPatterns = {"/Control_Ingreso"})
+public class Control_Ingreso extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -36,35 +33,16 @@ public class Control_Session extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            try{
-                String usu=(String)request.getParameter("usuario");
-                String pass=(String)request.getParameter("pass");
-                String sql="SELECT * FROM usuarios WHERE alias='"+usu+"' AND clave='"+pass+"'";
-                ResultSet res=con.consultar(sql);
-
-                while(res.next()){
-                    switch (res.getInt(4)) {
-                        case 1:
-                            //cambiar luego a la pagina administracion
-                            response.sendRedirect("Principal_Adm.jsp");
-                            break;
-                        case 2:
-                            //cambiar luego a la pagina para usuarios comunes
-                            response.sendRedirect(null);
-                            break;
-                        case 3:
-                            //cambiar luego a la pagina pagina comun con permisos para agregar cabañas
-                            response.sendRedirect(null);
-                            break;
-                        default:
-                            response.sendRedirect("index.jsp");
-                            break;
-                    }
-                }
-
-            }catch(SQLException ex){
-                out.println(ex.getMessage());
-            }
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet Control_Ingreso</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet Control_Ingreso at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

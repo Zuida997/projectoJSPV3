@@ -29,7 +29,7 @@
                   <input type="password" name="pass" class="form-control" placeholder="">
                 </div>
                 <div class="form-check">
-                  <button type="submit" class="btn btn-login float-right">Ingresar</button>
+                  <input type="submit" name="btnIngreso" class="btn btn-login float-right">
                 </div>
                 </form>
                 <div class="copy-text">¿No tienes un cuenta? <a href="#" data-toggle="modal" data-target="#LoginModal">Registrate aquí</a></div>
@@ -88,46 +88,50 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form class="" action="index.html" method="post">
+                <form class="" action="Control_Registro" method="post">
                   <div class="form-group">
                     <label for="lblNombre">Nombre:</label>
-                    <input type="text" name="" value="" class="form-control" placeholder="Juan">
+                    <input type="text" name="txtNombre" value="" class="form-control" placeholder="Juan">
                   </div>
                   <div class="form-group">
                     <label for="lblApellido">Apellidos:</label>
-                    <input type="text" name="" value="" class="form-control" placeholder="Perez Prado">
+                    <input type="text" name="txtApellidos" value="" class="form-control" placeholder="Perez Prado">
+                  </div>
+                    <div class="form-group">
+                    <label for="lblApellido">Contraseña:</label>
+                    <input type="password" name="txtPass" value="" class="form-control">
                   </div>
                   <div class="">
                       <label for="lblRut">RUT:</label>
                   </div>
                   <div class="form-group row">
-                    <div class="col-7" id="rut"><input type="text" name="" value="" class="form-control" placeholder="12345678" ></div>
+                    <div class="col-7" id="rut"><input type="text" name="rut" value="" class="form-control" placeholder="12345678" ></div>
                     <div class="col-1" id="lblDV"><label for="lblDV">-</label></div>
-                    <div class="col-4" id="dv"><input type="text" name="" value="" placeholder="DV" class="form-control"></div>
+                    <div class="col-4" id="dv"><input type="text" name="dv" value="" placeholder="DV" class="form-control"></div>
                   </div>
                   <div class="form-group">
                     <label for="lblDomicilio">Domicilio:</label>
-                    <input type="text" name="" value="" class="form-control">
+                    <input type="text" name="txtDomicilio" value="" class="form-control">
                   </div>
                   <div class="form-group">
                     <label for="lblRenta">Renta Liquida:</label>
-                    <input type="text" name="" value="" class="form-control" placeholder="350000">
+                    <input type="text" name="txtRenta" value="" class="form-control" placeholder="350000">
                   </div>
                   <div class="form-group">
                     <label for="lblFecha">Fecha de Nacimiento:</label>
-                    <input type="date" name="" value="DD/MM/AAAA" class="form-control">
+                    <input type="date" name="dtpFecha" class="form-control">
                   </div>
                   <div class="form-group">
                       <label for="">Tiene Familia:</label>
                       <div class="form-check">
-                        <input type="radio" name="rdbFamilia" value="1" class="form-check-input">
+                        <input type="radio" name="rdbFamilia" value="0" class="form-check-input">
                         <label for="">Si</label>
-                        <input type="radio" name="rdbFamilia" value="0">
+                        <input type="radio" name="rdbFamilia" value="1">
                         <label for="">No</label>
                       </div>
                   </div>
                   <div class="modal-footer">
-                    <button type="submit" class="btn btn-success">Registrarme</button>
+                    <button type="submit" name="btnRegistrar" class="btn btn-success">Registrarme</button>
                   </div>
                 </form>
               </div>
