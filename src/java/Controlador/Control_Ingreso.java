@@ -12,7 +12,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import Modelo.*;
+import java.sql.*;
+import javax.servlet.http.HttpSession;
 /**
  *
  * @author xzur
@@ -34,15 +36,28 @@ public class Control_Ingreso extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Control_Ingreso</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Control_Ingreso at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            if(request.getParameter("btnIngreso")!=null){
+                String user = request.getParameter("usuario");
+                String clave = request.getParameter("pass");
+                Conexion conexion = new Conexion();
+                try{
+                    Connection conect = conexion.Conexion();
+                    PreparedStatement st = conect.prepareStatement("SELECT COUNT(*) FROM tbl_usuarios WHERE rutUsuario='"+user+"' AND claveUsuario='"+clave+"'");
+                    ResultSet rs = st.executeQuery();
+                    while(rs.next()){
+                        if(rs.getInt(1) == 1){
+                            // AQUI DEBERIA CONSULTAR A LA BASE DE DATOS LOS DATOS DEL USUARIO Y LUEGO CREAR UN 
+                            // OBJETO DE USUARIO, LUEGO RESCATAR LOS PRIVILEGIOS DEL USUARIO
+                            // Y CONDICIONAR.
+                            response.sendRedirect("Vista/User/Catalogo.jsp");
+                        }else{
+                            response.sendRedirect("index.jsp");
+                        }
+                    }
+                }catch(SQLException e){
+                   System.out.print(e.getMessage());
+            }
+            }
         }
     }
 

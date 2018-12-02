@@ -1,7 +1,7 @@
 <%-- 
-    Document   : Principal_Adm
-    Created on : 22-11-2018, 15:45:59
-    Author     : maxim
+    Document   : Administrador
+    Created on : 02-12-2018, 16:25:58
+    Author     : xzur
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
