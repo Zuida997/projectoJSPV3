@@ -19,8 +19,7 @@ public class Usuario {
     private String nacUsuario;
     private int familaiUsuario;
     private String privUsuario;
-
-    
+    private String correoUsuario;
 
     public Usuario(String rutUsuario, String nomUsuario, String apeUsuario) {
         this.rutUsuario = rutUsuario;
@@ -99,6 +98,11 @@ public class Usuario {
     public void setFamilaiUsuario(int familaiUsuario) {
         this.familaiUsuario = familaiUsuario;
     }
-    
+    public String getCorreoUsuario() {
+         return correoUsuario;
+    }
+    public void setCorreoUsuario(String correoUsuario) {
+        this.correoUsuario = correoUsuario;
+    }
     
 }

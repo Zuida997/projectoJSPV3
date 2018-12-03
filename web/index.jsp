@@ -21,17 +21,18 @@
               <h2 class="text-center">INGRESO</h2>
                 <form class="login-form" method="post" action="Control_Session">
                 <div class="form-group">
-                  <label for="exampleInputEmail1" class="text-uppercase">Usuario</label>
-                  <input type="text" name="usuario" class="form-control" placeholder="" size="30px">
+                  <label for="exampleInputEmail1" class="text-uppercase">correo electronico</label>
+                  <input type="text" name="usuario" class="form-control" placeholder="" size="30px" required>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1" class="text-uppercase">Contraseña</label>
-                  <input type="password" name="pass" class="form-control" placeholder="">
+                  <input type="password" name="pass" class="form-control" placeholder="" required>
                 </div>
                 <div class="form-check">
                   <input type="submit" name="btnIngreso" class="btn btn-login float-right">
                 </div>
                 </form>
+                <div class="copy-text alertText" id="alerta"></div>
                 <div class="copy-text">¿No tienes un cuenta? <a href="#" data-toggle="modal" data-target="#LoginModal">Registrate aquí</a></div>
            </div>
            <!-- FIN SECCION DE login -->
