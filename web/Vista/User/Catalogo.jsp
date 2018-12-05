@@ -3,7 +3,10 @@
     Created on : 22-11-2018, 20:27:25
     Author     : xzur
 --%>
-
+<%@page import="Controlador.Control_Session"%>
+<%!
+    Control_Session cs=new Control_Session();
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

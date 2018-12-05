@@ -26,6 +26,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "Control_Session", urlPatterns = {"/Control_Session"})
 public class Control_Session extends HttpServlet {
     Conexion conexion = new Conexion();
+    HttpSession session;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -61,7 +62,7 @@ public class Control_Session extends HttpServlet {
                             nom=rs.getString(2);
                             ape=rs.getString(3);
                             Usuario modUser = new Usuario(rut,nom,ape);
-                            HttpSession session=request.getSession();
+                            session=request.getSession();
                             session.setAttribute("idUser",modUser);
                             response.sendRedirect("Vista/User/Catalogo.jsp");
                     }
