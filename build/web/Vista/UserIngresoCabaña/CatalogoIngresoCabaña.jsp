@@ -22,6 +22,7 @@
         <header>
           CATALOGO DE CABAÑAS
           <p>Bienvenido Usuario</p>
+          <a type="button" name="button" class="btn btn-success" href="#">ingresar cabaña</a>
         </header>
       </div>
   <!-- end header -->

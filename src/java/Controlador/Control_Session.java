@@ -26,7 +26,6 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "Control_Session", urlPatterns = {"/Control_Session"})
 public class Control_Session extends HttpServlet {
     Conexion conexion = new Conexion();
-    HttpSession session;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -49,30 +48,41 @@ public class Control_Session extends HttpServlet {
             ResultSet rs;
             sql="SELECT * FROM tbl_usuarios WHERE correoUsuario= '"+usu+"' AND claveUsuario= '"+pass+"' ";
             
-            if(usu!=null &&pass!=null){
                 try{
                     conect = conexion.Conexion();
                     PreparedStatement st=conect.prepareStatement(sql);
                     rs = st.executeQuery();
-                    if(rs.next()==false){
-                        response.sendRedirect("index.jsp");
+                    if(rs.next()){
+                        String rut,nom,ape;
+                        int pu;
+                        rut=rs.getString(1);
+                        nom=rs.getString(2);
+                        ape=rs.getString(3);
+                        pu=rs.getInt(11);
+                        Usuario modUser = new Usuario(rut,nom,ape,pu);
+                        HttpSession session=request.getSession();
+                        session.setAttribute("idUser",modUser);
+                        switch(modUser.getPrivUsuario()){
+                            case 1:
+                                response.sendRedirect("Vista/User/Catalogo.jsp");
+                                break;
+                            case 2:
+                                response.sendRedirect("Vista/adm/Administrador.jsp");
+                                break;
+                            case 3:
+                                response.sendRedirect("Vista/UserIngresoCabaña/CatalogoIngresoCabaña.jsp");
+                                break;
+                            default:
+                                response.sendRedirect("index.jsp");
+                                break;
+                        }
                     }else{
-                            String rut,nom,ape;
-                            rut=rs.getString(1);
-                            nom=rs.getString(2);
-                            ape=rs.getString(3);
-                            Usuario modUser = new Usuario(rut,nom,ape);
-                            session=request.getSession();
-                            session.setAttribute("idUser",modUser);
-                            response.sendRedirect("Vista/User/Catalogo.jsp");
+                        response.sendRedirect("index.jsp");
+
                     }
                 }catch(SQLException ex){
                     out.println(ex.getMessage());
                 }
-            }else{
-                
-            }
-            
         }
     }
 

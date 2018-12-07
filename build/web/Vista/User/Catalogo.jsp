@@ -5,7 +5,7 @@
 --%>
 <%@page import="Controlador.Control_Session"%>
 <%!
-    Control_Session cs=new Control_Session();
+    
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

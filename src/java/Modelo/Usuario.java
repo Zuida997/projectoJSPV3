@@ -17,14 +17,15 @@ public class Usuario {
     private String domicilioUsuario;
     private int rentaUsuario;
     private String nacUsuario;
-    private int familaiUsuario;
-    private String privUsuario;
+    private int familaiUsuario;    
+    private int privUsuario;
     private String correoUsuario;
 
-    public Usuario(String rutUsuario, String nomUsuario, String apeUsuario) {
+    public Usuario(String rutUsuario, String nomUsuario, String apeUsuario,int privUsuario) {
         this.rutUsuario = rutUsuario;
         this.nomUsuario = nomUsuario;
         this.apeUsuario = apeUsuario;
+        this.privUsuario=privUsuario;
     }
 
     public String getRutUsuario() {
@@ -51,11 +52,11 @@ public class Usuario {
         this.apeUsuario = apeUsuario;
     }
     
-    public String getPrivUsuario() {
+    public int getPrivUsuario() {
         return privUsuario;
     }
 
-    public void setPrivUsuario(String privUsuario) {
+    public void setPrivUsuario(int privUsuario) {
         this.privUsuario = privUsuario;
     }
 
